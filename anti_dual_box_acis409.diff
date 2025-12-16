@@ -34,9 +34,9 @@ Index: java/net/sf/l2j/Config.java
 +			// ============================================================
 +			// Anti DualBox System
 +			// ============================================================
-+			ANTI_DUALBOX_ENABLE = Boolean.parseBoolean(custom.getProperty("AntiDualBoxEnable", "false"));
-+			ANTI_DUALBOX_MAX_CONNECTIONS = Integer.parseInt(custom.getProperty("AntiDualBoxMaxConnections", "1"));
-+			ANTI_DUALBOX_WHITELISTED_IPS = custom.getProperty("AntiDualBoxWhitelistedIps", "");
++			ANTI_DUALBOX_ENABLE = Boolean.parseBoolean(jextreme.getProperty("AntiDualBoxEnable", "false"));
++			ANTI_DUALBOX_MAX_CONNECTIONS = Integer.parseInt(jextreme.getProperty("AntiDualBoxMaxConnections", "1"));
++			ANTI_DUALBOX_WHITELISTED_IPS = jextreme.getProperty("AntiDualBoxWhitelistedIps", "");
  		}
  		catch (Exception e)
  		{
