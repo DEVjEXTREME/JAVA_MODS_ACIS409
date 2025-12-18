@@ -1,0 +1,97 @@
+### Eclipse Workspace Patch 1.0
+#P aCis_gameserver
+
+Index: java/net/sf/l2j/Config.java
+===================================================================
+--- a/java/net/sf/l2j/Config.java
++++ b/java/net/sf/l2j/Config.java
+@@ -385,6 +385,10 @@
+     public static boolean ENABLE_VIP_NPC;
+     public static int VIP_NPC_ID;
+ 
++    public static boolean ENABLE_CLEANPK_ITEM;
++    public static int CLEANPK_ITEM_ID;
++    public static int CLEANPK_ITEM_AMOUNT;
++    public static int CLEANPK_REMOVE;
++
+@@ -745,6 +749,10 @@
+         ENABLE_VIP_NPC = jextreme.getProperty("EnableVipNpc", false);
+         VIP_NPC_ID = jextreme.getProperty("VipNpcId", 0);
+ 
++        ENABLE_CLEANPK_ITEM = jextreme.getProperty("EnableCleanPkItem", false);
++        CLEANPK_ITEM_ID = jextreme.getProperty("CleanPkItemId", 0);
++        CLEANPK_ITEM_AMOUNT = jextreme.getProperty("CleanPkItemAmount", 1);
++        CLEANPK_REMOVE = jextreme.getProperty("CleanPkRemove", 50);
++
+
+Index: java/net/sf/l2j/gameserver/handler/itemhandlers/CleanPkItem.java
+===================================================================
+--- /dev/null
++++ b/java/net/sf/l2j/gameserver/handler/itemhandlers/CleanPkItem.java
+@@ -0,0 +1,55 @@
++package net.sf.l2j.gameserver.handler.itemhandlers;
++
++import net.sf.l2j.Config;
++import net.sf.l2j.gameserver.handler.IItemHandler;
++import net.sf.l2j.gameserver.model.actor.Playable;
++import net.sf.l2j.gameserver.model.actor.Player;
++import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
++
++/**
++* @author Vinícius Gonçalves
++*
++*/
++
++public class CleanPkItem implements IItemHandler
++{
++    @Override
++    public void useItem(Playable playable, ItemInstance item, boolean forceUse)
++    {
++        if (!Config.ENABLE_CLEANPK_ITEM)
++            return;
++
++        if (!(playable instanceof Player player))
++            return;
++
++        if (player.getPkKills() <= 0)
++        {
++            player.sendMessage("Você não possui PKs para limpar.");
++            return;
++        }
++
++        if (!player.destroyItemByItemId(
++                Config.CLEANPK_ITEM_ID,
++                Config.CLEANPK_ITEM_AMOUNT,
++                true))
++        {
++            player.sendMessage("Você não possui o item necessário.");
++            return;
++        }
++
++        int removidos = Math.min(Config.CLEANPK_REMOVE, player.getPkKills());
++        player.setPkKills(player.getPkKills() - removidos);
++
++        player.sendMessage("Você removeu " + removidos + " PK(s) com sucesso.");
++        player.broadcastUserInfo();
++    }
++}
+
+Index: config/jextreme.properties
+===================================================================
+--- a/config/jextreme.properties
++++ b/config/jextreme.properties
+@@ -665,6 +665,18 @@
+ #Set Days For Vip chars From Npc
+ VipSetDays = 15
+ 
++# --------------------
++# Clean PK Item
++# --------------------
++
++EnableCleanPkItem = True
++
++CleanPkItemId = 20001
++
++CleanPkItemAmount = 1
++
++CleanPkRemove = 50
