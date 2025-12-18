@@ -1,5 +1,6 @@
 # MODS_JAVA_ACIS409
 Repositório dedicado a Java Mods para Lineage 2 (L2J / ACIS 409). Os mods são organizados por pastas, focados em controle, desempenho e funcionalidades customizadas para servidores Interlude.
+<img width="500" height="500" alt="jEXTREME-STUDIO" src="https://github.com/user-attachments/assets/44eda3cf-20e5-4f21-a2df-27b5ceaa28bf" />
 
 ---
 
