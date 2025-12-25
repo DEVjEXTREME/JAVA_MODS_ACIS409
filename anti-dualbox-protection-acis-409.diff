@@ -59,7 +59,7 @@ Index: java/net/sf/l2j/gameserver/custom/Antidualbox.java
 +import net.sf.l2j.gameserver.model.actor.Player;
 +
 +/**
-+ * Vinícius Gonçalves
++ * @author Vinícius Gonçalves
 + *
 + */
 +public class Antidualbox
@@ -138,4 +138,5 @@ Index: java/net/sf/l2j/gameserver/network/clientpackets/EnterWorld.java
 +		Antidualbox.checkAndPunish(player);
  
  		sendPacket(new SkillCoolTime(player));
+
 
