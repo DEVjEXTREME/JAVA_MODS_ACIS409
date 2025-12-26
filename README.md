@@ -4,14 +4,9 @@ Repositório dedicado a Java Mods para Lineage 2 (L2J / ACIS 409).
 Os mods são organizados por pastas, focados em controle, desempenho e funcionalidades customizadas para servidores Interlude.
 
 ---
-
 <p align="center">
-
 <img width="500" height="500" alt="jEXTREME_STUDIO1" src="https://github.com/user-attachments/assets/40ebf1f2-4679-4a21-96ad-0ab3121b008b" />
 </p>
-
-
-
 ---
 
 ## 🌐 Contato & Redes Sociais
