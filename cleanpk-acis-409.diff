@@ -3,21 +3,13 @@
 
 Index: java/net/sf/l2j/Config.java
 ===================================================================
---- a/java/net/sf/l2j/Config.java
-+++ b/java/net/sf/l2j/Config.java
-@@ -385,6 +385,10 @@
-     public static boolean ENABLE_VIP_NPC;
-     public static int VIP_NPC_ID;
  
 +    public static boolean ENABLE_CLEANPK_ITEM;
 +    public static int CLEANPK_ITEM_ID;
 +    public static int CLEANPK_ITEM_AMOUNT;
 +    public static int CLEANPK_REMOVE;
 +
-@@ -745,6 +749,10 @@
-         ENABLE_VIP_NPC = jextreme.getProperty("EnableVipNpc", false);
-         VIP_NPC_ID = jextreme.getProperty("VipNpcId", 0);
- 
+
 +        ENABLE_CLEANPK_ITEM = jextreme.getProperty("EnableCleanPkItem", false);
 +        CLEANPK_ITEM_ID = jextreme.getProperty("CleanPkItemId", 0);
 +        CLEANPK_ITEM_AMOUNT = jextreme.getProperty("CleanPkItemAmount", 1);
@@ -26,9 +18,6 @@ Index: java/net/sf/l2j/Config.java
 
 Index: java/net/sf/l2j/gameserver/handler/itemhandlers/CleanPkItem.java
 ===================================================================
---- /dev/null
-+++ b/java/net/sf/l2j/gameserver/handler/itemhandlers/CleanPkItem.java
-@@ -0,0 +1,55 @@
 +package net.sf.l2j.gameserver.handler.itemhandlers;
 +
 +import net.sf.l2j.Config;
@@ -77,12 +66,7 @@ Index: java/net/sf/l2j/gameserver/handler/itemhandlers/CleanPkItem.java
 
 Index: config/jextreme.properties
 ===================================================================
---- a/config/jextreme.properties
-+++ b/config/jextreme.properties
-@@ -665,6 +665,18 @@
- #Set Days For Vip chars From Npc
- VipSetDays = 15
- 
+
 +# --------------------
 +# Clean PK Item
 +# --------------------
@@ -94,5 +78,6 @@ Index: config/jextreme.properties
 +CleanPkItemAmount = 1
 +
 +CleanPkRemove = 50
+
 
 
