@@ -1,6 +1,3 @@
-### Eclipse Workspace Patch 1.0
-#P aCis_gameserver
-
 Index: java/net/sf/l2j/Config.java
 ===================================================================
  
@@ -78,6 +75,7 @@ Index: config/jextreme.properties
 +CleanPkItemAmount = 1
 +
 +CleanPkRemove = 50
+
 
 
 
